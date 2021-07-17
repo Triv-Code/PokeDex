@@ -32,12 +32,17 @@ body {
 }
 
 .pokeName {
+    z-index: 2;
     grid-row: 1;
     grid-column: 2;
     font-size: 5em;
     margin-top: -5px;
     margin-left: 25px;
     text-align: center;
+}
+
+.pokeName:first-letter {
+    text-transform: capitalize;
 }
 
 .pokeID {
@@ -78,18 +83,21 @@ body {
 }
 
 .gender {
-    grid-column: 1;
+    grid-column: 1/2;
     grid-row: 2;
     margin-left: 50px;
     margin-top: 10px;
+    width: 460px;
 }
 
 .typeBar {
-    margin-top: 10px;
+    display: flex;
+    justify-content: inline;
+    margin-top: -5px;
+    padding-top: 0px;
     margin-left: 22px;
-    width: 515px;
-    height: 27px;
-    background-color: purple;
+    width: 525px;
+    /* height: 25px; */
 }
 
 .pokeData {
@@ -103,5 +111,10 @@ body {
     background-color: #cef5df;
     padding: 10px;
 }
-  
-  
+
+.type {
+    text-align: center;
+    border: solid 2px black;
+    width: 265px;
+    margin-right: 10px;
+}
