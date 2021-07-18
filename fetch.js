@@ -19,6 +19,15 @@ poke.then(data => curPoke.abilities = data.abilities)
 poke.then(data => curPoke.typeOne = data.types[0].type.name)
 poke.then(data => curPoke.typeTwo = data.types[1].type.name)
 poke.then(data => curPoke.sprite = data.sprites.front_default)
+// Checks for typeTwo (avoids bug if there is only one type)
+function multiType() {
+    if (!curPoke.typeTwo) {
+        console.log('Only have one Type');
+    } else {
+        typeBar.insertAdjacentHTML('beforeend', `<h3 class="type ${curPoke.typeTwo}">${upperCase(curPoke.typeTwo)}</h3>`);
+    }
+
+}
 
 // Effectiveness Data to Array
 setTimeout(() => {
@@ -43,6 +52,7 @@ const imgDiv = document.querySelector('.imgDiv');
 const pokeInfo = document.querySelector('.pokeInfo');
 const pokeHW = document.querySelector('.pokeHW');
 const typeBar = document.querySelector('.typeBar');
+const pokeData = document.querySelector('.pokeData');
 
 // Capitalize First Letter
 function upperCase(string) {
@@ -68,6 +78,16 @@ function weightAdjust(num) {
     return `${num} lbs`
 }
 
+// function doubleDmg() {
+//     let doubleDmgFrom = curPoke.dmg.double_damage_from;
+//     let doubleDmgFromArray = []
+//     for (let i = 1; i <= doubleDmgFrom.length - 1; i++ ) {
+//         doubleDmgFromArray = curPoke.dmg.double_damage_from[i].name;
+//         pokeData.insertAdjacentHTML('afterbeing', `<p>${doubleDmgFromArray[i]}</p>`);
+//         console.log('did thing?');
+//     };
+// };
+
 setTimeout(() => {
         imgDiv.innerHTML = '<img src="' + curPoke.img + '" class="image">';
         pokeInfo.insertAdjacentHTML('afterbegin', `<h1 class="pokeName">${curPoke.name}</h1>`)
@@ -76,6 +96,23 @@ setTimeout(() => {
         pokeHW.insertAdjacentHTML('beforeend', `<h3 class="weight">Weight: ${weightAdjust(curPoke.weight)}</h3>`)
         pokeHW.insertAdjacentHTML('beforeend', `<h3 class="gender">Abilities: ${upperCase(curPoke.abilities[0].ability.name)},  ${upperCase(curPoke.abilities[1].ability.name)}</h3>`)
         typeBar.insertAdjacentHTML('afterbegin', `<h3 class=" type ${curPoke.typeOne}">${upperCase(curPoke.typeOne)}</h3>`)
-        typeBar.insertAdjacentHTML('beforeend', `<h3 class="type ${curPoke.typeTwo}">${upperCase(curPoke.typeTwo)}</h3>`)
-        console.log(poke);
+        // typeBar.insertAdjacentHTML('beforeend', `<h3 class="type ${curPoke.typeTwo}">${upperCase(curPoke.typeTwo)}</h3>`)
+        multiType();
+
+        function doubleDmg() {
+            let doubleDmgFrom = curPoke.dmg.double_damage_from;
+            let doubleDmgFromArray = []
+            for (let i = 0; i <= doubleDmgFrom.length; i++ ) {
+                doubleDmgFromArray = curPoke.dmg.double_damage_from[i].name;
+                console.log(doubleDmgFromArray);
+                pokeData.insertAdjacentHTML('afterbegin', `<p class="type ${doubleDmgFromArray}">${doubleDmgFromArray}</p>`);
+            };
+        };
+
+        doubleDmg();
+        // console.log(curPoke.dmg.double_damage_from[1].name);
+
+        
+        // console.log(curPoke.dmg.double_damage_from[0].name)
+        // doubleDmg();
     }, 2000);
