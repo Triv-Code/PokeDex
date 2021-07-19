@@ -1,0 +1,56 @@
+.statbar {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 200px;
+    height: 20px;
+    padding: 5px;
+    background: #ddd;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 5px;
+}
+  
+.hp {
+    background: #c54;
+    height: 10px;
+    position: relative;
+    transition: width .5s linear;
+  }
+  
+.atk {
+    background: #c54;
+    height: 10px;
+    position: relative;
+    transition: width .5s linear;
+}
+  
+.def {
+    background: #c54;
+    height: 10px;
+    position: relative;
+    transition: width .5s linear;
+}
+  
+.spd {
+    background: #c54;
+    height: 10px;
+    position: relative;
+    transition: width .5s linear;
+}
+  
+.satk {
+    background: #c54;
+    height: 10px;
+    position: relative;
+    transition: width .5s linear;
+}
+
+.sdef {
+    background: #c54;
+    height: 10px;
+    position: relative;
+    transition: width .5s linear;
+}
