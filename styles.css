@@ -67,7 +67,6 @@ body {
     margin-left: 20px;
     width: 515px;
     height: 100px;
-    /* justify-content: space-between; */
 }
 
 .height {
@@ -116,4 +115,15 @@ body {
     border: solid 2px black;
     width: 265px;
     margin-right: 10px;
+}
+
+.dmgtype {
+    text-align: center;
+    font-weight: bold;
+    border: solid 2px black;
+    width: 200px;
+    height: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
 }

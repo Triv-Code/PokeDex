@@ -1,4 +1,5 @@
 let curPoke = []
+let curPokeStats = []
 let promptTest = prompt('Give us a name');
 // const nameThat = document.getElementById('name');
 
@@ -19,6 +20,12 @@ poke.then(data => curPoke.abilities = data.abilities)
 poke.then(data => curPoke.typeOne = data.types[0].type.name)
 poke.then(data => curPoke.typeTwo = data.types[1].type.name)
 poke.then(data => curPoke.sprite = data.sprites.front_default)
+poke.then(data => curPokeStats.hp = data.stats[0].base_stat);
+poke.then(data => curPokeStats.atk = data.stats[1].base_stat);
+poke.then(data => curPokeStats.def = data.stats[2].base_stat);
+poke.then(data => curPokeStats.satk = data.stats[3].base_stat);
+poke.then(data => curPokeStats.sdef = data.stats[4].base_stat);
+poke.then(data => curPokeStats.spd = data.stats[5].base_stat);
 // Checks for typeTwo (avoids bug if there is only one type)
 function multiType() {
     if (!curPoke.typeTwo) {
@@ -31,19 +38,19 @@ function multiType() {
 
 // Effectiveness Data to Array
 setTimeout(() => {
-    let pokeDmg = new Promise((resolve, reject) => {
-        resolve(
-            fetch('https://pokeapi.co/api/v2/type/' + promptTest + '/')
-                .then(res => res.json())
-        )       
-    })
+    // let pokeDmg = new Promise((resolve, reject) => {
+    //     resolve(
+    //         fetch('https://pokeapi.co/api/v2/type/' + promptTest + '/')
+    //             .then(res => res.json())
+    //     )       
+    // })
     let pokeImg = new Promise((resolve, reject) => {
         resolve(
             fetch('https://pokeres.bastionbot.org/images/pokemon/' + curPoke.id + '.png')
         )
     })
 
-    pokeDmg.then(data => curPoke.dmg = data.damage_relations)           // Damage Effectiveness
+    // pokeDmg.then(data => curPoke.dmg = data.damage_relations)           // Damage Effectiveness
     pokeImg.then(data => curPoke.img = data.url)                                    // Large Img
 
 }, 1000);
@@ -59,7 +66,7 @@ function upperCase(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 // Turn Integer into Feet / Inches
-function heightAdjust(num) {
+function heightAdjust(num) {        //--- Needs Adjusted for Tall Pokemon
     num = num * 0.10;
     num = num * 3.281;
     foot = num.toString();
@@ -78,16 +85,6 @@ function weightAdjust(num) {
     return `${num} lbs`
 }
 
-// function doubleDmg() {
-//     let doubleDmgFrom = curPoke.dmg.double_damage_from;
-//     let doubleDmgFromArray = []
-//     for (let i = 1; i <= doubleDmgFrom.length - 1; i++ ) {
-//         doubleDmgFromArray = curPoke.dmg.double_damage_from[i].name;
-//         pokeData.insertAdjacentHTML('afterbeing', `<p>${doubleDmgFromArray[i]}</p>`);
-//         console.log('did thing?');
-//     };
-// };
-
 setTimeout(() => {
         imgDiv.innerHTML = '<img src="' + curPoke.img + '" class="image">';
         pokeInfo.insertAdjacentHTML('afterbegin', `<h1 class="pokeName">${curPoke.name}</h1>`)
@@ -99,20 +96,39 @@ setTimeout(() => {
         // typeBar.insertAdjacentHTML('beforeend', `<h3 class="type ${curPoke.typeTwo}">${upperCase(curPoke.typeTwo)}</h3>`)
         multiType();
 
-        function doubleDmg() {
-            let doubleDmgFrom = curPoke.dmg.double_damage_from;
-            let doubleDmgFromArray = []
-            for (let i = 0; i <= doubleDmgFrom.length; i++ ) {
-                doubleDmgFromArray = curPoke.dmg.double_damage_from[i].name;
-                console.log(doubleDmgFromArray);
-                pokeData.insertAdjacentHTML('afterbegin', `<p class="type ${doubleDmgFromArray}">${doubleDmgFromArray}</p>`);
-            };
-        };
-
-        doubleDmg();
-        // console.log(curPoke.dmg.double_damage_from[1].name);
-
-        
-        // console.log(curPoke.dmg.double_damage_from[0].name)
-        // doubleDmg();
+        // console.log([poke.then(data => data.stats[0].stat.name)])
+        console.log(curPokeStats);
     }, 2000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           // function doubleDmg() {
+        //     let doubleDmgFrom = curPoke.dmg.double_damage_from;
+        //     let doubleDmgFromArray = []
+        //     for (let i = 0; i <= doubleDmgFrom.length; i++ ) {
+        //         doubleDmgFromArray = curPoke.dmg.double_damage_from[i].name;
+        //         pokeData.insertAdjacentHTML('afterbegin', `<p class="dmgtype ${doubleDmgFromArray}">2X - ${upperCase(doubleDmgFromArray)}</p></div>`);
+        //     };
+        // };
+
+        // function halfDmg() {
+        //     let halfDmgFrom = curPoke.dmg.double_damage_from;
+        //     let halfDmgFromArray = []
+        //     for (let i = 0; i <= doubleDmgFrom.length; i++ ) {
+        //         halfDmgFromArray = curPoke.dmg.half_damage_from[i].name;
+        //         console.log(halfDmgFromArray);
+        //         pokeData.insertAdjacentHTML('afterbegin', `<p class="dmgtype ${halfDmgFromArray}">2X - ${upperCase(halfDmgFromArray)}</p></div>`);
+        //     };
+        // };
