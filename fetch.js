@@ -9,7 +9,6 @@ let poke = new Promise((resolve, reject) => {
             .then(res => res.json())
     )    
 })
-
 // API Data to pokeName Array
 poke.then(data => curPoke.name = data.name)                          
 poke.then(data => curPoke.id = data.id)
@@ -36,22 +35,14 @@ function multiType() {
 
 }
 
-// Effectiveness Data to Array
+// Large Image Fetch... Delayed for curPoke.id to update. 
 setTimeout(() => {
-    // let pokeDmg = new Promise((resolve, reject) => {
-    //     resolve(
-    //         fetch('https://pokeapi.co/api/v2/type/' + promptTest + '/')
-    //             .then(res => res.json())
-    //     )       
-    // })
     let pokeImg = new Promise((resolve, reject) => {
         resolve(
             fetch('https://pokeres.bastionbot.org/images/pokemon/' + curPoke.id + '.png')
         )
     })
-
-    // pokeDmg.then(data => curPoke.dmg = data.damage_relations)           // Damage Effectiveness
-    pokeImg.then(data => curPoke.img = data.url)                                    // Large Img
+    pokeImg.then(data => curPoke.img = data.url)
 
 }, 1000);
 
@@ -84,6 +75,14 @@ function weightAdjust(num) {
     num = Number.parseFloat(num).toPrecision(3);
     return `${num} lbs`
 }
+// Finds Percentage for Stats Bar
+function percentage(num) {
+    num = num / 160;
+    num = num * 100
+    num = Math.floor(num);
+    return num
+}
+
 
 setTimeout(() => {
         imgDiv.innerHTML = '<img src="' + curPoke.img + '" class="image">';
@@ -95,9 +94,12 @@ setTimeout(() => {
         typeBar.insertAdjacentHTML('afterbegin', `<h3 class=" type ${curPoke.typeOne}">${upperCase(curPoke.typeOne)}</h3>`)
         // typeBar.insertAdjacentHTML('beforeend', `<h3 class="type ${curPoke.typeTwo}">${upperCase(curPoke.typeTwo)}</h3>`)
         multiType();
-
-        // console.log([poke.then(data => data.stats[0].stat.name)])
-        console.log(curPokeStats);
+        document.querySelector(".hp").style.width=`${percentage(curPokeStats.hp)}%`;
+        document.querySelector(".atk").style.width=`${percentage(curPokeStats.atk)}%`;
+        document.querySelector(".def").style.width=`${percentage(curPokeStats.def)}%`;
+        document.querySelector(".spd").style.width=`${percentage(curPokeStats.spd)}%`;
+        document.querySelector(".satk").style.width=`${percentage(curPokeStats.satk)}%`;
+        document.querySelector(".sdef").style.width=`${percentage(curPokeStats.sdef)}%`;
     }, 2000);
 
 
