@@ -5,52 +5,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
     <link rel="stylesheet" href="poketype.css">
     <link rel="stylesheet" href="stats.css">
+    <link rel="stylesheet" href="layout.css">
 </head>
 <body>
+    <!-- <div class="searchDiv">
+      <input type="text" class="search" placeholder="Name that Pokemon!">
+    </div> -->
     <!-- div for Search Bar and Menu Icon -->
-    <div class="container">
-        <div class="imgDiv">
-          <!-- <img src="https://pokeres.bastionbot.org/images/pokemon/1.png" class="image"> -->
-        </div>
+    <div class="container" style="display: none;">
+      <div class="name_id_type_container">
         <div class="pokeInfo">
           <!-- <h1 class="pokeName">Bulbasaur</h1> -->
           <!-- <h3 class="pokeID">#001</h3> -->
+        </div>  
+        <div class="typeBar">
+          <!-- this is the type bars -->
         </div>
-        <div class="pokeBio">
-            <div class="pokeHW">
-                <!-- <h3 class="height">Height: 7</h3>
-                <h3 class="weight">Weight: 69</h3>
-                <h3 class="gender">Gender: ??</h3> -->
-            </div>
-            <div class="typeBar">
-                <!-- this is the type bars -->
-            </div>
+      </div>
+      <div class="img_stats_container">
+        <div class="imgDiv">
+          <!-- <img src="https://pokeres.bastionbot.org/images/pokemon/1.png" class="image"> -->
         </div>
-        <!-- Line Break Div -->
-        <div></div> 
+        <!-- stats -->
         <div class="pokeData">
-          <div class="statbar" data-total="1000" data-value="1000">
-            <div class="hp"></div>
+          <div class="inlineDiv">
+            <h3 class="statText">Hit Points</h3>
+            <div class="statbar" data-total="1000" data-value="1000">
+              <div class="hp"></div>
+            </div>
           </div>
-          <div class="statbar" data-total="1000" data-value="1000">
-            <div class="atk"></div>
-          </div>
-          <div class="statbar" data-total="1000" data-value="1000">
-            <div class="def"></div>
-          </div>
-          <div class="statbar" data-total="1000" data-value="1000">
-            <div class="spd"></div>
-          </div>
-          <div class="statbar" data-total="1000" data-value="1000">
-            <div class="satk"></div>
-          </div>
-          <div class="statbar" data-total="1000" data-value="1000">
-            <div class="sdef"></div>
-          </div>
+          <div class="inlineDiv">
+            <h3 class="statText">Attack</h3>
+            <div class="statbar" data-total="1000" data-value="1000">
+              <div class="atk"></div>
+            </div>
+          </div>    
+          <div class="inlineDiv">  
+            <h3 class="statText">Defense</h3>
+            <div class="statbar" data-total="1000" data-value="1000">
+              <div class="def"></div>
+            </div>
+          </div>    
+          <div class="inlineDiv">
+            <h3 class="statText">Speed</h3>
+            <div class="statbar" data-total="1000" data-value="1000">
+              <div class="spd"></div>
+            </div>
+          </div>    
+          <div class="inlineDiv">
+            <h3 class="statText">Special Attack</h3>
+            <div class="statbar" data-total="1000" data-value="1000">
+              <div class="satk"></div>
+            </div>
+          </div>    
+          <div class="inlineDiv">
+            <h3 class="statText">Special Defense</h3>
+            <div class="statbar" data-total="1000" data-value="1000">
+              <div class="sdef"></div>
+            </div>
+          </div>  
         </div>
+      </div>  
+        <!-- Boi info -->
+        <div class="pokeBio">
+          <div class="pokeHW">
+              <!-- <h3 class="height">Height: 7</h3>
+              <h3 class="weight">Weight: 69</h3>
+              <h3 class="ability">Abilities: ??</h3> -->
+          </div>
+      </div>
       </div>
 
 <script src="fetch.js"></script>

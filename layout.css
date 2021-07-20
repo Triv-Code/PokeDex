@@ -1,0 +1,170 @@
+body {
+    background-image: url(img/pokemap2.jpg);
+    background-color: #202020;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    border: solid 2px black;
+    width: 700px;
+    background-color: #262626;
+}
+
+.name_id_type_container {
+    display: grid;
+    grid-template-columns: 535px 100px;
+    grid-template-rows: 50px;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.pokeInfo {
+    display: flex;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.pokeName {
+    z-index: 2;
+    font-size: 5em;
+    margin: 0px;
+    margin-right: 20px;
+}
+
+.pokeName:first-letter {
+    text-transform: capitalize;
+}
+
+.pokeID {
+    font-size: 2em;
+    color: rgb(153, 153, 153);
+    margin-top: -5px;
+    margin-bottom: 0px;
+}
+
+.typeBar {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 10px;
+}
+
+.type {
+    text-align: center;
+    border: solid 2px black;
+    width: 100px;
+    margin: 5px;
+}
+
+.image {
+    width: 200px;
+    padding: 10px;
+    border: solid 2px black;
+    background-color:rgb(155, 235, 255);
+}
+
+.height {
+    margin-top: 5px;
+    margin-right: 0px;
+}
+.weight {
+    margin-top: 5px;
+    margin-right: 0px;
+}
+
+.ability {
+    margin-top: 5px;
+    margin-right: 0px;
+}
+
+.img_stats_container {
+    display: flex;
+}
+
+.imgDiv {
+    margin-right: 20px;
+}
+
+.pokeData {
+    margin-top: 10px;
+    width: 400px;
+}
+
+.pokeHW {
+    display: flex;
+    justify-content: space-between;
+    width: 650px;
+}
+
+@media screen and (max-width: 600px) {
+
+    .container {
+        justify-content: space-between;
+        margin-top: 50px;
+        border: solid 2px black;
+        width: 375px;
+        background-color: none;
+    }
+
+    .name_id_type_container {
+        display: grid;
+        grid-template-columns: 535px;
+        grid-template-rows: 50px 50px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+    }
+
+    .pokeName {
+        font-size: 4em;
+        margin: 0px;
+        margin-right: 20px;
+    }
+
+    .pokeID {
+        font-size: 2em;
+        color: rgb(153, 153, 153);
+        margin-top: -5px;
+        margin-bottom: 0px;
+    }
+
+    .typeBar {
+        display: flex;
+        flex-direction: row;
+        grid-column: 1;
+        grid-row: 2;
+        margin-top: 10px;
+        margin-left: 0px;
+        margin-right: 0px;
+        width: 350px;
+    }
+
+    .type {
+        text-align: center;
+        border: solid 2px black;
+        width: 200px;
+        height: 20px;
+        margin-top: 20px;
+    }
+
+    .img_stats_container {
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 10px;
+    }
+    
+    .image {
+        width: 330px;
+    }
+    
+    .pokeHW {
+        display: flex;
+        flex-direction: column;
+        width: 375px;
+        margin-left: 10px;
+    }
+
+}

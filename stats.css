@@ -11,6 +11,7 @@
     border-radius: 5px;
     position: relative;
     margin-bottom: 5px;
+    margin-left: 10px;
 }
   
 .hp {
@@ -53,4 +54,20 @@
     height: 10px;
     position: relative;
     transition: width .5s linear;
+}
+
+.inlineDiv {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.statText {
+    margin: 0px;
+}
+
+@media screen and (max-width: 600px) {
+    .inlineDiv {
+        width: 350px;
+    }
 }
