@@ -1,19 +1,17 @@
 let curPoke = []
 let curPokeStats = []
-let promptTest = prompt('Give us a name');
-// let promptTest = 1;
-// const searchPoke = document.querySelector('.search').value;
+let promptTest = prompt('Give us a name').toLowerCase();
 
 let poke = new Promise((resolve, reject) => {
     resolve(
         fetch('https://pokeapi.co/api/v2/pokemon/' + promptTest + '/')
             .then(res => res.json())
-    )    
+    ) 
 })
 // API Data to pokeName Array
 poke.then(data => curPoke.name = data.name)                          
 poke.then(data => curPoke.id = data.id)
-poke.then(data => curPoke.height = data.height)                     // Needs conversion Tool
+poke.then(data => curPoke.height = data.height)
 poke.then(data => curPoke.weight = data.weight)
 poke.then(data => curPoke.abilities = data.abilities)
 poke.then(data => curPoke.abilities = data.abilities)
@@ -26,10 +24,10 @@ poke.then(data => curPokeStats.def = data.stats[2].base_stat);
 poke.then(data => curPokeStats.satk = data.stats[3].base_stat);
 poke.then(data => curPokeStats.sdef = data.stats[4].base_stat);
 poke.then(data => curPokeStats.spd = data.stats[5].base_stat);
-// Checks for typeTwo (avoids bug if there is only one type)
+// Checks for typeTwo (Avoids a Bug if Pokemon only has 1 type, error is expected)
 function multiType() {
     if (!curPoke.typeTwo) {
-        console.log('This Pokemon only has one type. (Line 21 Error)');
+        console.log('This Pokemon only has one type. (Line 19 Error)');
     } else {
         typeBar.insertAdjacentHTML('beforeend', `<h3 class="type ${curPoke.typeTwo}">${upperCase(curPoke.typeTwo)}</h3>`);
     }
@@ -101,6 +99,4 @@ setTimeout(() => {
         document.querySelector(".spd").style.width=`${percentage(curPokeStats.spd)}%`;
         document.querySelector(".satk").style.width=`${percentage(curPokeStats.satk)}%`;
         document.querySelector(".sdef").style.width=`${percentage(curPokeStats.sdef)}%`;
-
-        console.log(curPoke.height);
-    }, 1500);
+    }, 2000);
