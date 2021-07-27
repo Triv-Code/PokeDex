@@ -78,4 +78,4 @@ fetch('https://pokeapi.co/api/v2/pokemon/' + promptTest + '/')
         document.querySelector(".satk").style.width = `${percentage(curPokeStats.satk)}%`;
         document.querySelector(".sdef").style.width = `${percentage(curPokeStats.sdef)}%`;
     })
-    .catch(() => alert('not a pokemon'))
+    .catch(() => alert("That's not a Pokemon! Be sure to check your spelling and try again!"))
