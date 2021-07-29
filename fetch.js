@@ -22,6 +22,10 @@ function heightAdjust(num) {        //--- Needs Adjusted for Tall Pokemon
     inch = num - foot;
     inch = 12 * inch;
     inch = Math.ceil(inch);
+    if (inch === 12) {
+        inch = 0
+        foot = foot + 1
+    }  
     return `${foot}'${inch}" `
 };
 // Turns Integer into Pounds / Ounces
