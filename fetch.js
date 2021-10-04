@@ -63,10 +63,10 @@ fetch('https://pokeapi.co/api/v2/pokemon/' + promptTest + '/')
         curPokeStats.satk = data.stats[3].base_stat
         curPokeStats.sdef = data.stats[4].base_stat
         curPokeStats.spd = data.stats[5].base_stat
-        curPoke.img = 'https://pokeres.bastionbot.org/images/pokemon/' + data.id + '.png'
+        curPoke.img = data.sprites.other.dream_world.front_default
         document.querySelector(".container").style.display = "grid";
         imgDiv.innerHTML = '<img src="' + curPoke.img + '" class="image">';
-        pokeInfo.insertAdjacentHTML('afterbegin', `<h1 class="pokeName">${curPoke.name}</h1>`)
+        pokeInfo.insertAdjacentHTML('afterbegin', `<h1 class="pokeName">${data.name}</h1>`)
         pokeInfo.insertAdjacentHTML('beforeend', `<h3 class="pokeID"># ${curPoke.id}</h3>`)
         pokeHW.insertAdjacentHTML('afterbegin', `<h3 class="height">Height: ${heightAdjust(curPoke.height)}</h3>`)
         pokeHW.insertAdjacentHTML('beforeend', `<h3 class="weight">Weight: ${weightAdjust(curPoke.weight)}</h3>`)
