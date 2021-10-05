@@ -1,5 +1,3 @@
-let curPoke = []
-let curPokeStats = []
 let promptTest = prompt('Give us a name').toLowerCase();
 
 const imgDiv = document.querySelector('.imgDiv');
@@ -46,40 +44,22 @@ function percentage(num) {
 fetch('https://pokeapi.co/api/v2/pokemon/' + promptTest + '/')
     .then(res => res.json())
     .then(data => {
-        curPoke.name = data.name
-        curPoke.id = data.id
-        curPoke.height = data.height
-        curPoke.weight = data.weight
-        curPoke.abilities = data.abilities
-        curPoke.abilities = data.abilities
-        curPoke.typeOne = data.types[0].type.name
-        if (data.types.length > 1) {
-            curPoke.typeTwo = data.types[1].type.name
-        }
-        curPoke.sprite = data.sprites.front_default
-        curPokeStats.hp = data.stats[0].base_stat
-        curPokeStats.atk = data.stats[1].base_stat
-        curPokeStats.def = data.stats[2].base_stat
-        curPokeStats.satk = data.stats[3].base_stat
-        curPokeStats.sdef = data.stats[4].base_stat
-        curPokeStats.spd = data.stats[5].base_stat
-        curPoke.img = data.sprites.other.dream_world.front_default
         document.querySelector(".container").style.display = "grid";
-        imgDiv.innerHTML = '<img src="' + curPoke.img + '" class="image">';
+        imgDiv.innerHTML = '<img src="' + data.sprites.other.dream_world.front_default + '" class="image">';
         pokeInfo.insertAdjacentHTML('afterbegin', `<h1 class="pokeName">${data.name}</h1>`)
-        pokeInfo.insertAdjacentHTML('beforeend', `<h3 class="pokeID"># ${curPoke.id}</h3>`)
-        pokeHW.insertAdjacentHTML('afterbegin', `<h3 class="height">Height: ${heightAdjust(curPoke.height)}</h3>`)
-        pokeHW.insertAdjacentHTML('beforeend', `<h3 class="weight">Weight: ${weightAdjust(curPoke.weight)}</h3>`)
-        pokeHW.insertAdjacentHTML('beforeend', `<h3 class="ability">Abilities: ${upperCase(curPoke.abilities[0].ability.name)},  ${upperCase(curPoke.abilities[1].ability.name)}</h3>`)
-        typeBar.insertAdjacentHTML('afterbegin', `<h3 class=" type ${curPoke.typeOne}">${upperCase(curPoke.typeOne)}</h3>`)
-        if (curPoke.typeTwo) {
-            typeBar.insertAdjacentHTML('beforeend', `<h3 class="type ${curPoke.typeTwo}">${upperCase(curPoke.typeTwo)}</h3>`);
+        pokeInfo.insertAdjacentHTML('beforeend', `<h3 class="pokeID"># ${data.id}</h3>`)
+        pokeHW.insertAdjacentHTML('afterbegin', `<h3 class="height">Height: ${heightAdjust(data.height)}</h3>`)
+        pokeHW.insertAdjacentHTML('beforeend', `<h3 class="weight">Weight: ${weightAdjust(data.weight)}</h3>`)
+        pokeHW.insertAdjacentHTML('beforeend', `<h3 class="ability">Abilities: ${upperCase(data.abilities[0].ability.name)},  ${upperCase(data.abilities[1].ability.name)}</h3>`)
+        typeBar.insertAdjacentHTML('afterbegin', `<h3 class=" type ${data.types[0].type.name}">${upperCase(data.types[0].type.name)}</h3>`)
+        if (data.types[1]) {
+            typeBar.insertAdjacentHTML('beforeend', `<h3 class="type ${data.types[1].type.name}">${upperCase(data.types[1].type.name)}</h3>`);
         }
-        document.querySelector(".hp").style.width = `${percentage(curPokeStats.hp)}%`;
-        document.querySelector(".atk").style.width = `${percentage(curPokeStats.atk)}%`;
-        document.querySelector(".def").style.width = `${percentage(curPokeStats.def)}%`;
-        document.querySelector(".spd").style.width = `${percentage(curPokeStats.spd)}%`;
-        document.querySelector(".satk").style.width = `${percentage(curPokeStats.satk)}%`;
-        document.querySelector(".sdef").style.width = `${percentage(curPokeStats.sdef)}%`;
+        document.querySelector(".hp").style.width = `${percentage(data.stats[0].base_stat)}%`;
+        document.querySelector(".atk").style.width = `${percentage(data.stats[1].base_stat)}%`;
+        document.querySelector(".def").style.width = `${percentage(data.stats[2].base_stat)}%`;
+        document.querySelector(".spd").style.width = `${percentage(data.stats[3].base_stat)}%`;
+        document.querySelector(".satk").style.width = `${percentage(data.stats[4].base_stat)}%`;
+        document.querySelector(".sdef").style.width = `${percentage(data.stats[5].base_stat)}%`;
     })
     .catch(() => alert("That's not a Pokemon! Be sure to check your spelling and try again!"))
