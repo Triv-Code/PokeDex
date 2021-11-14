@@ -13,47 +13,53 @@
     margin-bottom: 5px;
     margin-left: 10px;
 }
-  
+
 .hp {
+    width: 0;
     background: #c54;
     height: 10px;
     position: relative;
-    transition: width .5s linear;
+    transition: width .75s linear;
   }
   
 .atk {
+    width: 0;
     background: #c54;
     height: 10px;
     position: relative;
-    transition: width .5s linear;
+    transition: width .75s linear;
 }
   
 .def {
+    width: 0;
     background: #c54;
     height: 10px;
     position: relative;
-    transition: width .5s linear;
+    transition: width .75s linear;
 }
   
 .spd {
+    width: 0;
     background: #c54;
     height: 10px;
     position: relative;
-    transition: width .5s linear;
+    transition: width .75s linear;
 }
   
 .satk {
+    width: 0;
     background: #c54;
     height: 10px;
     position: relative;
-    transition: width .5s linear;
+    transition: width .75s linear;
 }
 
 .sdef {
+    width: 0;
     background: #c54;
     height: 10px;
     position: relative;
-    transition: width .5s linear;
+    transition: width .75s linear;
 }
 
 .inlineDiv {

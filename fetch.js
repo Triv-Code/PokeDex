@@ -55,11 +55,14 @@ fetch('https://pokeapi.co/api/v2/pokemon/' + promptTest + '/')
         if (data.types[1]) {
             typeBar.insertAdjacentHTML('beforeend', `<h3 class="type ${data.types[1].type.name}">${upperCase(data.types[1].type.name)}</h3>`);
         }
-        document.querySelector(".hp").style.width = `${percentage(data.stats[0].base_stat)}%`;
-        document.querySelector(".atk").style.width = `${percentage(data.stats[1].base_stat)}%`;
-        document.querySelector(".def").style.width = `${percentage(data.stats[2].base_stat)}%`;
-        document.querySelector(".spd").style.width = `${percentage(data.stats[3].base_stat)}%`;
-        document.querySelector(".satk").style.width = `${percentage(data.stats[4].base_stat)}%`;
-        document.querySelector(".sdef").style.width = `${percentage(data.stats[5].base_stat)}%`;
+        setTimeout( function() {
+            document.querySelector(".hp").style.width = `${percentage(data.stats[0].base_stat)}%`;
+            document.querySelector(".atk").style.width = `${percentage(data.stats[1].base_stat)}%`;
+            document.querySelector(".def").style.width = `${percentage(data.stats[2].base_stat)}%`;
+            document.querySelector(".spd").style.width = `${percentage(data.stats[3].base_stat)}%`;
+            document.querySelector(".satk").style.width = `${percentage(data.stats[4].base_stat)}%`;
+            document.querySelector(".sdef").style.width = `${percentage(data.stats[5].base_stat)}%`;
+        }, 500);
+        
     })
     .catch(() => alert("That's not a Pokemon! Be sure to check your spelling and try again!"))
