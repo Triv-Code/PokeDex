@@ -1,4 +1,9 @@
-let promptTest = prompt('Give us a name').toLowerCase();
+// let promptTest = prompt('Give us a name').toLowerCase();
+function getPokeInput() {
+    pokeInput = document.getElementById('userInput').value;
+    fetchPoke(pokeInput.toLowerCase());
+    document.querySelector('.pokeSearch').style.display = 'none';
+}
 
 const imgDiv = document.querySelector('.imgDiv');
 const pokeInfo = document.querySelector('.pokeInfo');
@@ -41,7 +46,10 @@ function percentage(num) {
     return num
 }
 // API Fetch, Creates Arrays, Inserts HTML
-fetch('https://pokeapi.co/api/v2/pokemon/' + promptTest + '/')
+
+function fetchPoke(pokeInput) {
+
+fetch('https://pokeapi.co/api/v2/pokemon/' + pokeInput + '/')
     .then(res => res.json())
     .then(data => {
         document.querySelector(".container").style.display = "grid";
@@ -55,7 +63,7 @@ fetch('https://pokeapi.co/api/v2/pokemon/' + promptTest + '/')
         if (data.types[1]) {
             typeBar.insertAdjacentHTML('beforeend', `<h3 class="type ${data.types[1].type.name}">${upperCase(data.types[1].type.name)}</h3>`);
         }
-        setTimeout( function() {
+        setTimeout( function() { // Timeout used for transition CSS
             document.querySelector(".hp").style.width = `${percentage(data.stats[0].base_stat)}%`;
             document.querySelector(".atk").style.width = `${percentage(data.stats[1].base_stat)}%`;
             document.querySelector(".def").style.width = `${percentage(data.stats[2].base_stat)}%`;
@@ -66,3 +74,4 @@ fetch('https://pokeapi.co/api/v2/pokemon/' + promptTest + '/')
         
     })
     .catch(() => alert("That's not a Pokemon! Be sure to check your spelling and try again!"))
+};

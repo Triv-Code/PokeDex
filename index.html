@@ -8,8 +8,15 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/poketype.css">
     <link rel="stylesheet" href="css/stats.css">
+    <script src="https://kit.fontawesome.com/93c39929eb.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <div class="pokeSearch">
+    <input type="text" placeholder="  Pokemon Name or ID" id="userInput" class="search-bar">
+    <button type="button" onclick="getPokeInput();" class="search-btn">
+      <i class="far fa-arrow-alt-circle-down"></i>
+    </button>
+  </div>
     <div class="container" style="display: none;">
       <div class="name_id_type_container">
         <div class="pokeInfo">

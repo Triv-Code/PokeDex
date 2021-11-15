@@ -1,3 +1,7 @@
+:root {
+    --border-color: white;
+}
+
 body {
     background-image: url(../img/pokemap2.jpg);
     background-color: #202020;
@@ -6,11 +10,36 @@ body {
     justify-content: center;
 }
 
+.pokeSearch {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 700px;
+    margin-top: 50px;
+    gap: 10px;
+}
+
+.search-bar {
+    width: 300px;
+    height: 40px;
+    border: 3px solid var(--border-color);
+    background-color: #262626;
+    color: white;
+}
+
+.search-btn {
+    width: 50px;
+    border: 3px solid var(--border-color);
+    background-color: #262626;
+    color: white;
+    font-size: 25px;
+}
+
 .container {
     display: flex;
     justify-content: center;
     margin-top: 50px;
-    border: solid 2px black;
+    border: solid 2px var(--border-color);
     width: 700px;
     background-color: #262626;
 }
@@ -55,7 +84,7 @@ body {
 
 .type {
     text-align: center;
-    border: solid 2px black;
+    border: solid 2px var(--border-color);
     width: 100px;
     margin: 5px;
 }
@@ -65,7 +94,7 @@ body {
     height: 200px;
     padding: 10px;
     border: solid 2px black;
-    background-color:rgb(174, 239, 255);
+    background-color: rgb(174, 239, 255);
 }
 
 .height {
@@ -102,11 +131,10 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-
     .container {
         justify-content: space-between;
         margin-top: 50px;
-        border: solid 2px black;
+        border: solid 2px var(--border-color);
         width: 375px;
         background-color: none;
     }
@@ -145,7 +173,7 @@ body {
 
     .type {
         text-align: center;
-        border: solid 2px black;
+        border: solid 2px var(--border-color);
         width: 200px;
         height: 20px;
         margin-top: 20px;
@@ -156,16 +184,15 @@ body {
         justify-content: center;
         margin-left: 10px;
     }
-    
+
     .image {
         width: 330px;
     }
-    
+
     .pokeHW {
         display: flex;
         flex-direction: column;
         width: 375px;
         margin-left: 10px;
     }
-
 }
